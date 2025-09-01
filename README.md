@@ -1,0 +1,1 @@
+# rick-and-morty-api-jp-2025
