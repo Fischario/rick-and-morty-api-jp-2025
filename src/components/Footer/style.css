@@ -1,3 +1,5 @@
+@import '../../raizera.css';
+
 footer {
     background-color: black;
     color: white;
@@ -6,10 +8,10 @@ footer {
     flex-direction: row;
     align-items: center; /* Alinha Verticalmente */
     justify-content: center; /* Alinha Horizontalmente */
-    border-top: 3.5px solid #90BA12;
+    border-top: 3.5px solid var(--cor-primaria);
 }
 
 footer::selection {
     color: black;
-    background-color: #90BA12;
+    background-color: var(--cor-primaria);
 }
