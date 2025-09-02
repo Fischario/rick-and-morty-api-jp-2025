@@ -1,3 +1,5 @@
+@import 'raizera.css';
+
 .cabecalho {
   padding: 30px 30px 20px 30px;
   color: white;
@@ -131,4 +133,53 @@ h5 {
 
 h1, h2, h4, h5 {
 	margin: 0;
+}
+
+/* ----------------------------------- */
+
+.filtro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 1em;
+  background-color: black;
+  border-radius: 13.6px;
+  border: 3px solid var(--cor-primaria);
+  margin-top: 2em;
+  margin-bottom: 1em;
+  min-width: max-content;
+}
+
+.filtro input {
+  padding: 4px;
+  background-color: black;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 4px;
+}
+
+.filtro label {
+  padding-bottom: 2.7px;
+}
+
+select {
+  color: var(--cor-primaria);
+  background-color: black;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+option {
+  color: var(--cor-primaria);
+  background-color: black;
+}
+
+.filtro-opcoes {
+  display: flex;
+  gap: 10px;
+}
+
+#pesquisar {
+  display: flex;
 }
