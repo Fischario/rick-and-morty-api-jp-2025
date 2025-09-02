@@ -47,12 +47,21 @@ function App() {
         <div>
           <div className='lista-secundaria'>
             <b>Participações:</b>
-            {/* DESAFIO: Trazer as participações */}
+            <div className='episodios'>
+              {MapTodosEpisodios(personagem.episode)}
+            </div>
           </div>
           <h5> <b>Status: </b> {personagem.status} </h5>
         </div>
       </div>
     )
+  }
+
+  function MapTodosEpisodios(episode) {
+    return episode.map((episodio) => {
+      const id = episodio.split('/').pop();
+      return <span key={id}>Ep. {id}</span>
+    });
   }
 
   async function carregar(url) {
@@ -103,6 +112,7 @@ function App() {
               <option value="">Todas</option>
               <option value="human">Human</option>
               <option value="alien">Alien</option>
+              <option value="robot">Robot</option>
               <option value="animal">Animal</option>
               <option value="humanoid">Humanoid</option>
               <option value="unknown">Unknown</option>
