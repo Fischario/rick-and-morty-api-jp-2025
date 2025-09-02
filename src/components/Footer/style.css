@@ -1,0 +1,15 @@
+footer {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Alinha Verticalmente */
+    justify-content: center; /* Alinha Horizontalmente */
+    border-top: 3.5px solid #90BA12;
+}
+
+footer::selection {
+    color: black;
+    background-color: #90BA12;
+}
