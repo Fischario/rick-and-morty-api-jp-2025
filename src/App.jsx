@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import TrocarPagina from './components/TrocarPagina'
 import './App.css'
 import { useEffect, useState } from 'react'
 
@@ -125,6 +126,7 @@ function App() {
         <div className='lista-principal'>
           {conteudo}
         </div>
+        <TrocarPagina />
       </main>
       <Footer />
     </>
