@@ -9,11 +9,22 @@ header {
     align-items: center; /* Alinha Verticalmente */
     justify-content: center; /* Alinha Horizontalmente */
     border-bottom: 3.5px solid var(--cor-primaria);
+    gap: 20px;
     transition: 0.2s;
 }
 
-header:hover {
+h2 {
+    margin: 0;
+    padding-top: 4px;
+}
+
+a:hover {
     color: var(--cor-primaria);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
 }
 
 header::selection {
