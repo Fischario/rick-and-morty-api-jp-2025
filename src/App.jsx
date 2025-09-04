@@ -4,38 +4,19 @@ import Footer from './components/Footer'
 import TrocarPagina from './components/TrocarPagina'
 import './App.css'
 import { useEffect, useState } from 'react'
+import { getCharacters } from './api/character'
 
 function App() {
   const [conteudo, setConteudo] = useState(<>Carregando...</>)
   const [especieSelecionada, setEspecieSelecionada] = useState('')
   const [nomeSelecionado, setNomeSelecionado] = useState('')
 
-  async function PegarConteudo(url) {
-    // Vai realizar o fetch para a API do Rick and Morty - Usando AXIOS
-
-    // GET     =  Buscar Informação
-    // POST    =  Adicionar Informação
-    // PUT     =  Alterar Informação
-    // DELETE  =  Deletar Informação
-
-    const requestOptions = {
-      method: 'GET'
+  async function TransformaEmLista() {
+    const param = { 
+      name: nomeSelecionado, 
+      species: especieSelecionada
     }
-
-    const response = await fetch(url, requestOptions)
-
-    if (!response.ok) {
-      return []
-    }
-
-    // data = { info: {}, results: {} }
-    const data = await response.json()
-
-    return data.results
-  }
-
-  async function TransformaEmLista(url) {
-    const todosPersonagens = await PegarConteudo(url)
+    const todosPersonagens = await getCharacters(param)
 
     return todosPersonagens.map(personagem =>
       <div className='card char' key={personagem.id}>
@@ -65,32 +46,13 @@ function App() {
     });
   }
 
-  async function carregar(url) {
-    setConteudo(await TransformaEmLista(url))
+  async function carregar() {
+    setConteudo(await TransformaEmLista())
   }
 
   useEffect(() => {
-    carregar('https://rickandmortyapi.com/api/character')
+    carregar()
   }, [])
-
-  function clickPesquisar() {
-    if (especieSelecionada == '' && nomeSelecionado == ''){
-      const url = 'https://rickandmortyapi.com/api/character'
-      carregar(url)
-    }
-    else if (especieSelecionada != '' && nomeSelecionado == '') {
-      const url = `https://rickandmortyapi.com/api/character?species=${especieSelecionada}`
-      carregar(url)
-    }
-    else if (especieSelecionada == '' && nomeSelecionado != '') {
-      const url = `https://rickandmortyapi.com/api/character?name=${nomeSelecionado}`
-      carregar(url)
-    }
-    else if (especieSelecionada != '' && nomeSelecionado != '') {
-      const url = `https://rickandmortyapi.com/api/character?name=${nomeSelecionado}&species=${especieSelecionada}`
-      carregar(url)
-    }
-  }
 
   function handleEspecieSelecionada(evento) {
     return setEspecieSelecionada(evento.target.value)
@@ -121,7 +83,7 @@ function App() {
               <option value="mythological%20creature">Mythological Creature</option>
             </select>
           </div>
-          <button id='pesquisar' type='submit' onClick={clickPesquisar}>Pesquisar</button>
+          <button id='pesquisar' onClick={carregar}>Pesquisar</button>
         </div>
         <div className='lista-principal'>
           {conteudo}
